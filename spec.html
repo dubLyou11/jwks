@@ -1,0 +1,218 @@
+<h1>Overnight Algorithm</h1>
+<p><i>Revised 2026-09-14. Reconciles the original General Rules with the current night process (updated Apr 2026) and the legacy process (Nov 2025, used for context only). Where the two process documents disagree, the Apr 2026 version wins. All text is paraphrased; nothing is copied from the source documents. Where the original General Rules differ from the current process, the process rule is primary and the original rule is kept as an alternative for discussion (section 10).</i></p>
+
+<h2>0. Purpose and scope</h2>
+<ul>
+<li>This document is the rule spec for an algorithm that distributes overnight patients to the next day's rounder teams. It covers the two overnight passes (pendings, then follow-ups), the rebalancing check, and the state handed to the daytime process.</li>
+<li>Daytime admission distribution is out of scope except where it feeds the overnight rules (the 23-encounter cap, teams that capped yesterday, and the anchor team from signout).</li>
+</ul>
+
+<h2>1. Definitions</h2>
+<ul>
+<li><b>Rounder team:</b> a numbered daytime team (R01, R02, ... R25). The round-robin rotation runs R01 through R21 and wraps from R21 back to R01. Flex and surge teams (R21 flex, R22, R23 surge, and similar) are opened and closed by the schedule and the Director on Duty (DOD). When one works a full day (through 7 pm) it is a normal rounder and takes part in both passes (added 2026-09-15).</li>
+<li><b>Teaching teams (R01 IM, R02 FM, and as of 2026-09-15 R05):</b> always treated as old rounders, even on a physician's first day. The incoming physician at a teaching-team handoff is not a new rounder: normal distribution, no cap at 19, no forced fill to 18. They are subject to the 15-patient floor like everyone else and otherwise run on normal rules, including the normal 23 cap; the legacy 19 follow-up ceiling for R02 FM is superseded (Walker, 2026-09-15). R05 follows the teaching-team rules in general but not necessarily identically to R01 IM and R02 FM; details to follow.</li>
+<li><b>Old rounder:</b> a physician who was on service the day before, on any rounder team. Changing team numbers between days does not make someone new, and the patient list moves with the physician to the new team number. Moving from a non-teaching team onto a teaching team counts as old.</li>
+<li><b>New rounder:</b> first full shift of a stretch on a non-teaching team (R03 and up). Moving from a teaching team onto a non-teaching team counts as new on that first day: the residents keep the teaching list, so this physician starts with an empty list and is usually capped at 19, with room to go higher if census requires.</li>
+<li><b>Short-shift rounder:</b> a rounder working less than a full day, for example 7 am to 1 pm. Gets a fixed patient target by shift length (see section 4) and then leaves the rotation. A flex or surge team working through 7 pm is not a short shift.</li>
+<li><b>MOD (1MOD):</b> the physician serving as medical officer of the day. MOD status affects daytime admissions only: the MOD team takes no daytime admissions. Overnight distribution ignores MOD status entirely; the team is handled by its normal old or new rounder rules (a new-rounder MOD is filled overnight to 18, or 19 on Wednesdays, like any new rounder). The MOD assignment comes from the schedule and is passed to the daytime process.</li>
+<li><b>Follow-up:</b> a patient already seen by one of our physicians overnight (nocturnist or swing) or earlier in the stay. Operationally: a completed H&amp;P, or an H&amp;P that a current-shift nocturnist has started and saved. Two flavors: a <b>regular follow-up</b>, whose H&amp;P or latest note is dated before midnight (for example, seen by the swing physician the prior evening, or an established patient), so the day team owes a progress note today; and a <b>DTTO</b>, which does not.</li>
+<li><b>DTTO (day team takeover):</b> a patient whose H&amp;P was written after midnight on the day the new team picks them up. The day team writes no note for that patient that day; they see the patient and handle any updates and orders. For distribution, a DTTO is a follow-up (already seen by one of our physicians), but it is the lightest of the three workloads.</li>
+<li><b>Workload order, heaviest to lightest:</b> pending (full H&amp;P plus orders), regular follow-up (progress note), DTTO (visit and orders only). This ordering is why new rounders should be steered toward follow-ups and DTTOs rather than pendings when a choice exists.</li>
+<li><b>Pending (also called overcap):</b> a patient admitted to our service whom none of our physicians has seen yet: no completed H&amp;P and no started H&amp;P. Pendings are the "new admissions" the day team will see first.</li>
+<li><b>Census:</b> the number of patients on a team's list. It must be refreshed from live data immediately before each pass, not carried over from earlier in the night.</li>
+<li><b>Encounter cap:</b> 23 total encounters for one team in a 24-hour period (daytime hard cap). The overnight process never takes a team past 22.</li>
+<li><b>Capped yesterday:</b> a team that reached 23 during the previous day, as reported at signout or by the DOD. Its overnight census may be lower after discharges; the flag still applies. The flag only removes the team from the follow-up pass. Whether it can take a pending depends on its current census like any other team: at 21 it may take one (to 22), at 22 or 23 it takes nothing.</li>
+<li><b>Fully capped at start:</b> a team whose census is 23 when the overnight process begins.</li>
+<li><b>Anchor team:</b> the rounder number where the previous rotation ended. It is the single piece of state passed between shifts and determines where both overnight passes start.</li>
+</ul>
+
+<h2>2. General Rules (original, with clarifications)</h2>
+<ol>
+<li>Rounders who are just starting service (first day on) should be increased to a minimum of 18 patients when feasible. This should not create a disproportionate or unfair workload compared to rounders already on service. When assigning these patients, prioritize follow-ups and DTTOs over pendings whenever possible to avoid overwhelming a physician on their first day.
+<ul>
+<li><b>Clarification:</b> in the current process, 18 is the new rounder's target and also their ceiling during the follow-up pass (a new rounder at 18 is skipped for further follow-ups). It is not a floor that gets topped up. On Wednesdays the ceiling may rise to 19 (section 5).</li>
+<li><b>Clarification:</b> new rounders stay in the pending round-robin like every other team. The usual mix is 17 follow-ups plus 1 pending; 18 plus 0 when pendings run out before reaching them; 16 plus 2 on a heavy night. Primary rule (current process): new rounders take their turn in the pending round-robin like every other team. <b>Alternative for discussion (original rule):</b> steer new rounders toward follow-ups and DTTOs instead of pendings, because a pending costs a full H&amp;P, a regular follow-up a progress note, and a DTTO only a visit plus orders. This would only change outcomes where the algorithm has a choice, such as during rebalancing or when a pending would push a new rounder to two. See section 10.</li>
+</ul></li>
+<li>Rounders who have already been on service (not their first day) should have a minimum of 15 patients by the end of morning distribution whenever possible. This is a goal, not a hard stop.
+<ol>
+<li>Important caveat:
+<ol>
+<li>Efficient discharging should not be penalized. If a rounder finishes the prior day with a low census because of multiple discharges, they should not automatically be brought up to 15 patients and then re-enter the normal distribution algorithm, as this can result in a disproportionate number of admissions.</li>
+<li>In general, a team with fewer than 15 patients at the end of the previous day should not start the morning with more than 16 patients, except in situations with unusually high overnight admission volume.</li>
+<li>Example - Incorrect:
+<ol>
+<li>Rounder 20 ends the prior day with 12 patients.</li>
+<li>Receives 3 patients to reach 15 before other rounder distribution begins.</li>
+<li>Remains in the round-robin algorithm and receives additional admissions, and starts the day with 18 patients.</li>
+</ol></li>
+<li>Example - Correct:
+<ol>
+<li>Rounder 20 ends the prior day with 12 patients.</li>
+<li>Participates in the normal round-robin distribution process with the expectation of reaching at least 15 patients.</li>
+<li>If round-robin distribution is complete and Rounder 20 remains below 15 patients, patients should be reassigned from another rounder, prioritizing those who received the largest number of admissions or those exceeding the preferred 21-patient threshold (see Rule 4).</li>
+</ol></li>
+</ol></li>
+</ol>
+<ul>
+<li><b>Primary rule (current process):</b> the top-up happens after the round-robin, not before, and the patients that move are the most recently assigned follow-ups, found by walking backward through the follow-up assignment order. <b>Alternative for discussion (original rule, step 3 above):</b> pull instead from the teams that received the most admissions or that are above 21. See section 10.</li>
+<li><b>Resolved (Walker, 2026-09-14):</b> the floor is 15. Any old rounder at 14 or below after the follow-up pass is bumped up to 15 in the final check. The legacy habit of only acting at 12 or below is superseded.</li>
+<li><b>Resolved (Walker, 2026-09-15):</b> the floor is a goal, not a guarantee. If there are not enough patients to lift a team to 15, take it as high as the available patients allow and stop. Never pull a patient from a team that would then fall below its own floor. In practice this almost never comes up.</li>
+<li><b>Alternative for discussion (original rule 2.1.2):</b> the "no more than 16" start for teams that ended below 15 is not in either source document. The primary rule has no such ceiling beyond the plus-or-minus-one evenness goal. See section 10.</li>
+</ul></li>
+<li>Rounders should have no more than 23 total encounters within a 24-hour period. This is a hard stop unless the overall census demands that the rule be exceeded.
+<ul>
+<li><b>Clarification:</b> overnight, the effective ceiling is 22: no patient is ever assigned to a team already at 22 or more, in either pass. A team that begins the overnight process at 23 is skipped in both passes, including a team that capped yesterday and could not discharge anyone.</li>
+<li><b>Clarification (Walker, 2026-09-15):</b> 23 is the hard limit. In rare census emergencies a team has gone to 24, but only on explicit DOD authorization. The algorithm must never do this on its own; it should treat any breach of 23 as a DOD override that is recorded as such.</li>
+</ul></li>
+<li>When possible, the algorithm should be adjusted to avoid capping teams overnight so they can continue participating in the daytime admission process. This is a preference rather than a hard stop.
+<ol>
+<li>As a general principle, try to avoid teams exceeding 21 patients from overnight admissions alone. However, if a team already has 21 patients, it is often reasonable to assign one overnight admission and bring them to 22. This still allows participation in at least one daytime admission before reaching the cap.</li>
+<li>Example: A team starting the day with 21 patients is greatly preferred over a team starting with 23 patients, as the former can still participate in the daytime admission algorithm.</li>
+</ol>
+<ul>
+<li><b>Clarification:</b> this matches the current process exactly: a pending may go to a team at 21 (taking it to 22) but never to a team at 22. In the follow-up pass, old rounders are also stopped once they reach 22.</li>
+</ul></li>
+<li>If a team reaches the cap of 23 total encounters during a given day, it should receive no more than one new admission overnight during the subsequent 24-hour period.
+<ol>
+<li>Example:
+<ol>
+<li>A rounder receives an afternoon admission that becomes their 23rd encounter of the day, thereby capping the team.</li>
+<li>That team should receive a maximum of one additional overnight admission before the next day's distribution process.</li>
+</ol></li>
+</ol>
+<ul>
+<li><b>Primary rule (current process):</b> a team that capped yesterday stays in the pending round-robin, subject to the same census ceiling as everyone else (usually 1 pending if it discharged down to 21 or below; nothing if it is still at 22 or 23), and is skipped entirely in the follow-up pass. <b>Alternative for discussion (original rule):</b> hard-limit such a team to one overnight admission even on a heavy night where the rotation hands every team two. See section 10.</li>
+</ul></li>
+</ol>
+
+<h2>3. The two-pass distribution (core algorithm)</h2>
+<h3>3.1 Inputs</h3>
+<ul>
+<li>Tomorrow's schedule, from ShiftAdmin: which physician is on which team, team number changes, teaching-team handoffs, who is MOD, full vs short shift (with hours), and which flex, surge, or other teams are open or closed.</li>
+<li>New vs old classification for every team (section 1), double-checked against yesterday's roster.</li>
+<li>The anchor team from yesterday's signout.</li>
+<li>The list of teams that capped yesterday (from signout or the DOD).</li>
+<li>Live census for every team, refreshed before each pass.</li>
+<li>The pending list and the follow-up list, already split (section 7).</li>
+</ul>
+
+<h3>3.2 Pass A: pendings, moving forward</h3>
+<ul>
+<li>Order the pendings by patient last name A to Z (a deterministic, auditable order; the algorithm may use any deterministic order as long as it is consistent).</li>
+<li>Start with the team immediately after the anchor. If yesterday ended on R09, the first pending goes to R10.</li>
+<li>Assign one pending per team, ascending, wrapping R21 to R01, until pendings run out. Strict round-robin: no team gets a second pending until every eligible team has had one.</li>
+<li>Eligible: every team in the rotation including new rounders and teams that capped yesterday, as long as the census ceiling allows. A capped-yesterday team still sitting at 22 or 23 is skipped like any other team at that census.</li>
+<li>Skip: teams at 22 or more; teams fully capped at start (23); teams closed in the schedule; short-shift teams that already received their one pending (or that the DOD excluded); teams above 21 unless the pending is the one that takes them from 21 to 22.</li>
+<li>Record the last team that received a pending. That value becomes tomorrow's anchor and is what the signout message reports.</li>
+</ul>
+
+<h3>3.3 Pass B: follow-ups, moving backward</h3>
+<ul>
+<li>Refresh every team's census first.</li>
+<li>Order the follow-ups by patient last name Z to A.</li>
+<li>Start on the anchor team itself. If yesterday ended on R09, the first follow-up goes to R09, then R08, R07, and so on, wrapping R01 to R21.</li>
+<li>The starting point does not depend on where Pass A ended. The two passes deliberately run in opposite directions from the same anchor: the team that got the first pending is the last to get a follow-up, and vice versa, which evens out the load.</li>
+<li>Skip: teams at 22 or more; new rounders already at 18 (19 on Wednesdays); teams that capped yesterday; teams fully capped at start; short-shift teams at their target; teams closed in the schedule. MOD status is not a reason to skip.</li>
+<li>Continue until follow-ups run out. Most eligible teams should end up with the same number of follow-ups, plus or minus one.</li>
+<li>Temporary skip (legacy rule worth keeping): if a team was given several follow-ups early to reach its floor, hold it out of the rotation until the other teams have caught up to the same count, then put it back in.</li>
+</ul>
+
+<h3>3.4 Pass C: final check and rebalancing</h3>
+<ul>
+<li>Old rounders at 14 or below (the floor is 15; there is no lower trigger): move follow-ups from the teams that received them most recently (walk the follow-up assignment order in reverse) until the team reaches 15. Do not take a team below its own floor to do this. If the patients run out first, leave the team where it lands; the floor is a goal, not a guarantee.</li>
+<li>New rounders above 18 (19 on Wednesdays): move the excess follow-ups to whichever team would have been next in the follow-up order.</li>
+<li>Confirm no team exceeds 22 and that any team that started at 23 received nothing.</li>
+<li>Any situation the rules do not resolve is escalated to the DOD rather than guessed.</li>
+<li>When moving a patient between teams, remove the old team assignment before adding the new one; a patient can carry more than one team and only one is primary.</li>
+</ul>
+
+<h2>4. Team-type rules (targets and ceilings)</h2>
+<ul>
+<li><b>Old rounder, full shift:</b> floor 15; anyone at 14 or below after the follow-up pass is bumped to 15 in the final check. Follow-up pass stops at 22. Never assigned anything at 22 or above. Legacy ceiling of 21 follow-ups, leaving room for one pending.</li>
+<li><b>New rounder, full shift (R03 and up):</b> target and ceiling 18 total, typically 17 follow-ups plus 1 pending. 19 allowed only under the Wednesday rule.</li>
+<li><b>R01 IM:</b> always old. Floor 15 applies.</li>
+<li><b>R02 FM:</b> always old. Floor 15 applies. Normal rules and the normal 23 cap; no special follow-up ceiling.</li>
+<li><b>Short shifts (legacy table; confirm current):</b> 6 hours: 10 follow-ups plus 1 pending. 7 hours: 12 plus 1. 8 hours: 14 plus 1. 9 hours: 14 plus 2. 10 hours: 16 plus 2. Current process: give a short-shift rounder exactly one pending unless the DOD said none; never two. Out of both rotations once at target.</li>
+<li><b>R05 (teaching, as of 2026-09-15):</b> always old. Teaching-team rules apply in general; specifics to follow.</li>
+<li><b>Incoming physician at a teaching-team handoff:</b> old. Normal distribution, no 19 cap, no forced 18.</li>
+<li><b>Physician leaving a teaching team for a rounder team:</b> new, starts empty (residents keep the list), usually capped at 19, higher only if census requires.</li>
+<li><b>Physician changing team number:</b> old; the list moves with them.</li>
+<li><b>MOD:</b> normal overnight treatment by old or new rounder rules. No daytime admissions; that rule belongs to the daytime process.</li>
+<li><b>Flex and surge teams:</b> normal rounders when working through 7 pm; short-shift rules only for an early end. Open or closed per the schedule and DOD.</li>
+<li><b>Capped yesterday:</b> skipped in the follow-up pass regardless of census. Takes pendings on its turn only if its census allows (at 21, one pending to 22; at 22 or 23, nothing).</li>
+<li><b>Fully capped at start (23):</b> skipped in both passes.</li>
+<li><b>Closed in the schedule:</b> skipped in both passes.</li>
+</ul>
+
+<h2>5. Wednesday (Tuesday night) rules</h2>
+<ul>
+<li>Wednesday has the most turnover, so most teams are new but not all. Classify every team carefully: anyone on service Tuesday is old even if their team number changed (their list moves with them); anyone moving onto a teaching team is old; anyone leaving a teaching team for a rounder team is new and starts empty.</li>
+<li>The problem: with many new rounders capped at 18, the follow-up pass can force old rounders to take 4 or 5 follow-ups each.</li>
+<li>The relief valve: new rounders may go to 19 (18 follow-ups plus 1 pending, or 17 plus 2), but only after two gates are met: every old rounder has received at least 2 follow-ups, and every old rounder is at or above 15. Old rounders who capped yesterday or are already at 21 or above are exempt from the 2-follow-up gate.</li>
+<li>Trigger: use the 19 ceiling when the follow-up pass would otherwise give old rounders a 4th follow-up (not counting follow-ups given purely to reach the 15 floor).</li>
+<li>Once the gates are met, continue giving old rounders their 3rd and, if needed, 4th follow-ups. Never take a new rounder above 19.</li>
+</ul>
+
+<h2>6. State handed between shifts (algorithm inputs and outputs)</h2>
+<ul>
+<li><b>Output, overnight to day:</b> the anchor (last team to receive a pending), sent to the day MA and DOD between 6:30 and 7:00 am, plus the post-distribution census per team. The legacy document used the last team to receive a follow-up instead; the current process uses the last pending recipient. Implement the current definition.</li>
+<li><b>Input, day to overnight:</b> the team the daytime rotation ended on (the next anchor), and which teams capped during the day.</li>
+<li>The legacy "add 7 to the ending team number" starting rule is superseded and should not be implemented.</li>
+</ul>
+
+<h2>7. Data preconditions (needed before the algorithm can run in Epic)</h2>
+<ul>
+<li>Every patient whose attending is one of our hospitalists must have a primary team. Patients under an ICU or specialist attending are ignored.</li>
+<li>All new overnight admissions accepted by a nocturnist sit on a single admissions holding team until distribution. Accepted transfers that have not physically arrived sit on a separate transfers holding team and move to admissions on arrival.</li>
+<li>Classification into follow-up vs pending depends on H&amp;P status. Before the split, nocturnists should have started (and saved) an H&amp;P for every patient they have seen, so a started-but-unfinished H&amp;P counts as seen. Nocturnist cap status must be known before the split.</li>
+<li>A sweep around 4:00 am catches patients with no primary team or on the wrong holding team: a stay under one day with a nocturnist or swing attending belongs on admissions; a longer stay needs a chart check to see whether we are still following.</li>
+<li>Admissions that arrive after the split still go on the admissions holding team so the day MA has them.</li>
+<li>To separate DTTOs from regular follow-ups, the algorithm needs each H&amp;P's timestamp (or date of service) from Epic and compares it with midnight local time on the distribution day. Swing-physician H&amp;Ps written before midnight are regular follow-ups; nocturnist H&amp;Ps written after midnight are DTTOs. A nocturnist H&amp;P that was started before midnight but signed after it should be classified by whichever timestamp the group treats as the note date; confirm which.</li>
+<li>After distribution: set each team's attending to the day's rounder (skip patients under non-hospitalist attendings), and end the nocturnist and swing attending and treatment-team assignments on follow-ups.</li>
+<li>Census is refreshed before each pass. Team membership is many-to-one with a single primary flag, so reassignments must remove the old team explicitly.</li>
+</ul>
+
+<h2>8. Constraint hierarchy for the algorithm</h2>
+<ul>
+<li><b>Hard (never violated):</b> no team above 22 overnight; teams starting at 23 get nothing (23 is the hard daytime cap; a 24 has happened only under explicit DOD authorization in extreme census, and the algorithm never grants it on its own); short-shift targets; new rounder ceiling of 18 (19 Wednesday); teaching teams always old; teams that capped yesterday get no follow-ups; closed teams get nothing.</li>
+<li><b>Soft (goals, in priority order):</b> old rounder floor of 15; evenness of follow-ups plus or minus one; avoid taking a team above 21 on overnight patients alone; keep new rounders near 18 with at most one pending when possible; when a choice exists, give new rounders DTTOs and regular follow-ups rather than pendings.</li>
+<li><b>Alternatives for discussion (original rules that differ from the current process; not adopted by default):</b> listed in section 10.</li>
+</ul>
+
+<h2>9. Open questions to resolve before building</h2>
+<ol>
+<li>Should DTTOs be tracked as their own category in the follow-up pass (spread evenly, or steered toward new rounders), or used only as a tie-break during rebalancing? Tracking them separately requires the H&amp;P timestamp for every follow-up.</li>
+<li>Is the short-shift target table still current? It appears only in the legacy document.</li>
+<li>Confirm the rotation range is R01 through R21 with wraparound, and that R22 and above never enter the round-robin.</li>
+<li>What is the tie-break when multiple teams are equally eligible for a rebalancing move?</li>
+<li>R05 as a teaching team: which of the R01 IM and R02 FM rules apply to it exactly (floor, ceiling, handoff handling)?</li>
+</ol>
+
+<h2>10. Alternatives for discussion (original rules, not adopted by default)</h2>
+<p>Decision rule (Walker, 2026-09-14): where the original General Rules and the current process disagree, the process rule is primary. The original ideas below are kept so they can be argued for explicitly.</p>
+<ul>
+<li><b>Top-up source.</b> Primary: move the most recently assigned follow-ups, walking backward through the assignment order. Alternative: take patients from the teams that received the most admissions or that are above 21. They differ whenever the last teams to receive follow-ups are not the heaviest teams.</li>
+<li><b>Capped-yesterday limit.</b> Primary: the team stays in the pending round-robin and is skipped for follow-ups. Alternative: hard-limit the team to one overnight admission. They differ only on nights where the rotation gives every team two or more pendings.</li>
+<li><b>Ceiling after a low-census day.</b> Primary: no special ceiling; the plus-or-minus-one evenness goal applies. Alternative: a team that ended the prior day below 15 should not start above 16 unless volume is unusually high. They differ on heavy nights when a low-census team would otherwise collect three or more patients.</li>
+<li><b>New rounder workload mix.</b> Primary: new rounders take pendings in strict rotation. Alternative: prefer follow-ups and DTTOs for new rounders wherever the algorithm has a choice. They differ during rebalancing and when a second pending would land on a new rounder.</li>
+<li><b>New rounder floor vs ceiling.</b> Primary: 18 is the target and the follow-up-pass ceiling. Alternative (original wording): 18 as a minimum to reach when feasible. They differ when follow-ups are scarce and a new rounder would need top-ups to reach 18.</li>
+</ul>
+
+<h2>Revision log</h2>
+<ul>
+<li>2026-09-15 (seventh pass): per Walker, R02 FM has no special follow-up ceiling and runs on normal rules with the normal 23 cap; the legacy 19 is superseded. Recorded that the 15 floor is a goal: if patients run out, the team finishes where it lands.</li>
+<li>2026-09-15 (sixth pass): per Walker, MOD status affects daytime admissions only; overnight distribution ignores it. Removed the MOD skips from both passes and closed the old-rounder MOD question.</li>
+<li>2026-09-15 (fifth pass): folded in the ShiftAdmin-session rules: team number changes carry the list, teaching handoffs are not new, leaving a teaching team is new and starts empty, R05 is a second teaching team, MOD gets no admissions, full-day flex and surge teams are normal rounders. Walker's "Updates from zoom" notes preserved verbatim.</li>
+<li>2026-09-15 (fourth pass): per Walker, clarified that a capped-yesterday team takes pendings only if its current census allows and gets nothing if still at 22 or 23; recorded 23 as the hard limit with 24 possible only as an explicit DOD override.</li>
+<li>2026-09-14 (third pass): per Walker, the current process is primary wherever it differs from the original rules; the original rules are preserved in new section 10 as alternatives for discussion. Top-up floor fixed at 15 (14 or below gets bumped); three open questions closed.</li>
+<li>2026-09-14 (second pass): defined DTTO as day team takeover per Walker, added the three-tier workload order, the H&amp;P-timestamp data need, and replaced the DTTO open question.</li>
+<li>2026-09-14: added sections 0, 1, 3 through 9; kept the original five General Rules verbatim as section 2 and added labeled clarifications where the source process differs. Original preserved as "Overnight Algorithm - ORIGINAL backup 2026-09-14".</li>
+</ul>
+<p>Updates from zoom:</p>
+<ol>
+<li>Swing admitted the day prior and is working a day shift the next day – wants to follow those patients tomorrow. </li>
+<li>By a certain time, the night docs need to “lock in” which admissions</li>
+<li>HIPAA – need a way to take away but link mrn</li>
+<li>Half list day peoples rules</li>
+<li>Connect to shift admin</li>
+</ol>
